@@ -1,10 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { ADD_SONG } from "../../redux/songSlice";
 import { useRouter } from "next/router";
-import useGetBase64 from "../../hooks/getBase64";
-import validUrl from "valid-url";
 
 const CoverInput = () => {
   const dis = useDispatch();

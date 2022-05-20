@@ -22,8 +22,13 @@ const SongInput = () => {
     }
 
     const add = () => {
-      dis(ADD_SONG(data))
-      validUrl.isUri(data) ? router.push('/addCover') : err()
+      if(!validUrl.isUri(data)){
+        err();
+      }else{
+          dis(ADD_SONG(data));
+          router.push("/addCover");
+      }
+
     }
 
 

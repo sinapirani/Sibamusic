@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { ADD_SONG } from "../../redux/songSlice";
 import { useRouter } from "next/router";
+import useGetBase64 from "../../hooks/getBase64";
 import validUrl from "valid-url";
 
 const CoverInput = () => {
@@ -14,9 +15,11 @@ const CoverInput = () => {
   const img = useRef()
   const router = useRouter();
 
+
   const imgPicked = (e) => {
     const [file] = e.target.files
     setSrc(URL.createObjectURL(file))
+
   }
 
 

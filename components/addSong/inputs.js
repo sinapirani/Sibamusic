@@ -9,7 +9,7 @@ const SongInput = () => {
 
     const dis = useDispatch()
     const [data, setData] = useState()
-    const [errMs, setErrMs] = useState()
+    const [errMs, setErrMs] = useState('')
     const input = useRef(null)
     const router = useRouter()
 
@@ -18,7 +18,7 @@ const SongInput = () => {
     }
 
     const err = () => {
-
+      setErrMs('please insert a valid url!')
     }
 
     const add = () => {
@@ -45,7 +45,7 @@ const SongInput = () => {
           Add to PlayList
         </button>
 
-        <p>{err}</p>
+        <p className=" text-red-500">{errMs}</p>
 
       </div>
     );

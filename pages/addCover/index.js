@@ -1,3 +1,5 @@
+import CoverText from "../../components/addCover/text";
+import CoverInput from "../../components/addCover/input";
 
 const AddCover = () => {
   return (
@@ -10,7 +12,8 @@ const AddCover = () => {
       ></div>
 
       <div className=" w-full z-50 flex justify-evenly items-center ">
-
+        <CoverText/>
+        <CoverInput/>
       </div>
     </div>
   );

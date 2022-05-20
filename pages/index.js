@@ -1,10 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-
 import Image from 'next/image'
 import HomeButton from '../components/home/buttons';
 import HomeHead from '../components/home/head'
 import HomeText from '../components/home/text'
-// import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (

@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
+import getBase64 from "./getBase64";
 
 const CoverInput = () => {
   const dis = useDispatch();
@@ -16,7 +17,7 @@ const CoverInput = () => {
   const imgPicked = (e) => {
     const [file] = e.target.files
     setSrc(URL.createObjectURL(file))
-
+    console.log(getBase64(file));
   }
 
 

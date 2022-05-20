@@ -9,7 +9,7 @@ const SongSlice = createSlice({
     },
     reducers:{
         ADD_SONG: (state, action) => {
-            state.songs = [...state.song, action.payload]
+            state.songs = [...state.songs,action.payload]
         }
     }
 })

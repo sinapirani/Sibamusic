@@ -26,7 +26,7 @@ const SongInput = () => {
         err();
       }else{
           dis(ADD_SONG(data));
-          router.push("/addCover");
+          router.push("/player");
       }
 
     }

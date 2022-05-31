@@ -3,7 +3,7 @@ import songSlice from "./songSlice";
 
 const store = configureStore({
     reducer:{
-        songSlice
+        songSlice,
     }
 })
 

@@ -5,7 +5,7 @@ const HomeButton = () => {
 
     return (
       <div className={` ${style.button} flex flex-col gap-y-2 justify-center items-center`}>
-        <Link href={'/addSong'}>
+        <Link href={'/selectSong'}>
           <button className={` ${style.buttonEl} w-[22rem] h-28 bg-white text-[#182729] text-5xl font-extrabold rounded-2xl `}>
             Play Now
           </button>        

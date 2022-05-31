@@ -1,37 +1,34 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import mp3tag from "mp3tag.js";
 import axios from "axios";
-
+import { useSelector } from "react-redux";
 
 
 const PlayerAudio = () => {
 
+  const value = useSelector((state) => state.songSlice.songs);
+  const [data, setData] = useState()
+  useEffect(()=>{
+    typeof value[0] == 'string' ? setData(JSON.parse(value[0])) : ''
+  },[value])
+
+  useEffect(()=>{
+    console.log('data: ' , data);
+  },[data])
   const AudioRef = useRef()
   
-  const data = axios.get(
-    "http://v1.musica.asia/files/Shahab%20Tiam%20-%20Bi%20Hashiye.mp3",
-    {withCredentials: false,}
-  ).then(res => {
-    console.log(res.data);
-  }).catch((err)=>{
-    console.log(err);
-    
-  })
-
-  // const reader = new FileReader()
-  // reader.readAsArrayBuffer(AudioRef?.current?.src)
-  // reader.onload = () => {
-  //   const buffer = reader.result;
-
-  //   const tag = new mp3tag(buffer)
-  //   tag.read()
-  //   console.log(tag.tags);
-
-  // }
-  
   return (
-    <div>
-      <audio ref={AudioRef} src="http://v1.musica.asia/files/Shahab%20Tiam%20-%20Bi%20Hashiye.mp3" controls></audio>
+    <div className="flex flex-row-reverse justify-evenly items-center w-full ">
+      <div>
+        <p className="text-white text-5xl font-extrabold">
+          {data?.common?.title}
+        </p>
+        <p className="text-white text-xl">{data?.common?.albumartist}</p>
+      </div>
+
+      <div>
+        <img src="" height={580} width={580} alt="" />
+      </div>
     </div>
   );
 

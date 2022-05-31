@@ -18,12 +18,10 @@ const PlayerAudio = ({picChanger}) => {
   },[value])
 
   useEffect(()=>{
-    console.log('data: ' , data);
     data ? setPic(data?.common?.picture[0].data.data) : ''
   },[data])
 
   useEffect(()=>{
-    console.log('pic:' , pic);
     pic ? picRef.current.src = `data:image/png;base64,${btoa(pic.reduce((data, byte) => data + String.fromCharCode(byte), ''))}` : ''
     pic ? picChanger(`data:image/png;base64,${btoa(pic.reduce((data, byte) => data + String.fromCharCode(byte), ''))}`) : ''
   },[pic])
@@ -33,7 +31,7 @@ const PlayerAudio = ({picChanger}) => {
   return (
     <div className="flex flex-row-reverse justify-evenly items-center w-full ">
       <div>
-        <p className="text-white text-5xl font-extrabold max-w-[15ch] mb-2" contentEditable>
+        <p className="text-white text-5xl font-extrabold max-w-[15ch] mb-2" suppressContentEditableWarning={true} contentEditable>
           {data?.common?.title}
         </p>
         <p className="text-white text-xl">{data?.common?.albumartist || data?.common?.artist}</p>

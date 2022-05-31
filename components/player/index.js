@@ -33,10 +33,10 @@ const PlayerAudio = ({picChanger}) => {
   return (
     <div className="flex flex-row-reverse justify-evenly items-center w-full ">
       <div>
-        <p className="text-white text-5xl font-extrabold w-full">
+        <p className="text-white text-5xl font-extrabold max-w-[15ch] mb-2" contentEditable>
           {data?.common?.title}
         </p>
-        <p className="text-white text-xl">{data?.common?.albumartist}</p>
+        <p className="text-white text-xl">{data?.common?.albumartist || data?.common?.artist}</p>
       </div>
 
       <div>

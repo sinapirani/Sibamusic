@@ -31,7 +31,7 @@ const SelectInput = () => {
 
           musicMetaData.parseBlob(blob).then((metadata) => {
             dis(DEL_SONG())
-            dis(ADD_SONG(JSON.stringify(metadata)));
+            dis(ADD_SONG({meta: JSON.stringify(metadata), song: buffer}));
             setErrMs('end')
             router.push('/player')
           });

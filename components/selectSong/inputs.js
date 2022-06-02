@@ -30,6 +30,7 @@ const SelectInput = () => {
           const blob = arrayBufferToBlob(buffer, type);
 
           musicMetaData.parseBlob(blob).then((metadata) => {
+            
             dis(ADD_SONG(JSON.stringify(metadata)));
             setErrMs('end')
             router.push('/player')

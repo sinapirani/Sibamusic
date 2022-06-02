@@ -4,17 +4,21 @@ import mp3tag from "mp3tag.js";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { arrayBufferToBlob } from "blob-util";
+import { useRouter } from "next/router";
 
 
 const PlayerAudio = ({picChanger}) => {
 
   const value = useSelector((state) => state.songSlice.songs);
+  console.log('value:', value);
   const [data, setData] = useState()
   const [pic, setPic] = useState()
   const picRef = useRef()
+  const router = useRouter()
+  const [audio] = useState(typeof Audio != 'undefined' && new Audio())
 
   useEffect(()=>{
-    typeof value[0] == 'string' ? setData(JSON.parse(value[0])) : ''
+    value?.song ? setData(JSON.parse(value.meta)) : router.push("selectSong");
   },[value])
 
   useEffect(()=>{
@@ -25,6 +29,16 @@ const PlayerAudio = ({picChanger}) => {
     pic ? picRef.current.src = `data:image/png;base64,${btoa(pic.reduce((data, byte) => data + String.fromCharCode(byte), ''))}` : ''
     pic ? picChanger(`data:image/png;base64,${btoa(pic.reduce((data, byte) => data + String.fromCharCode(byte), ''))}`) : ''
   },[pic])
+
+  useEffect(()=>{
+    if(audio){
+      const blob = new Blob([value.song], { type: "audio/wav" });
+      const url = window.URL.createObjectURL(blob);
+      audio.src = url
+      audio.play()
+    }
+  },[audio])
+
 
   const AudioRef = useRef()
   

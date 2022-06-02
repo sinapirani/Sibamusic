@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import songSlice, {ADD_SONG} from '../../redux/songSlice'
+import {ADD_SONG, DEL_SONG} from '../../redux/songSlice'
 import {useRouter} from 'next/router'
 import * as musicMetaData from 'music-metadata-browser'
 import { arrayBufferToBlob } from "blob-util";
@@ -30,7 +30,7 @@ const SelectInput = () => {
           const blob = arrayBufferToBlob(buffer, type);
 
           musicMetaData.parseBlob(blob).then((metadata) => {
-            
+            dis(DEL_SONG())
             dis(ADD_SONG(JSON.stringify(metadata)));
             setErrMs('end')
             router.push('/player')

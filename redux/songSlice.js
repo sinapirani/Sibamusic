@@ -11,11 +11,11 @@ const SongSlice = createSlice({
         ADD_SONG: (state, action) => {
             state.songs = [action.payload];
         },
-        DEL_SONG: (state, action) => {
+        DEL_SONG: (state) => {
             state.songs = []
         }
     }
 })
 
 export default SongSlice.reducer
-export const {ADD_SONG} = SongSlice.actions
+export const {ADD_SONG, DEL_SONG} = SongSlice.actions

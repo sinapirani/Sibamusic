@@ -69,16 +69,6 @@ const SelectInput = ({music}) => {
         >
           Click to select
         </label>
-
-        {/* <button
-          className={`text-center h-24 w-[30vw] ${data ? 'bg-[#016F7E] text-white ' : 'bg-[#002328] text-[#434343] cursor-not-allowed'} rounded-[2rem]  text-4xl font-extrabold `}
-          type="text"
-          placeholder="paste url like: https://siba..."
-          // onClick={add}
-        >
-          Add to PlayList
-        </button> */}
-
         <p className=" text-red-500">{errMs}</p>
       </div>
     );

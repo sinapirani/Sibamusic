@@ -3,7 +3,7 @@ import PlayerAudio from "../../components/player";
 
 
 
-const Player = () => {
+const Player = ({music}) => {
 
   const [pic, setPic] = useState("url(/home/bg.jpg)");
   const picChanger = (pic) => {
@@ -21,7 +21,7 @@ const Player = () => {
           <div className=" absolute h-[150vh] w-[150vh] bg-[#220036] opacity-25 blur-[188px] rounded-full z-0 "></div>
 
           <div className=" relative w-full h-screen flex justify-evenly items-center text-white z-50">
-            <PlayerAudio picChanger={picChanger} />
+            <PlayerAudio picChanger={picChanger} music={music} />
           </div>
         </div>
       </div>

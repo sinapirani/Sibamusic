@@ -4,9 +4,10 @@ import {ADD_SONG, DEL_SONG} from '../../redux/songSlice'
 import {useRouter} from 'next/router'
 import * as musicMetaData from 'music-metadata-browser'
 import { arrayBufferToBlob } from "blob-util";
+import { IS_PLAYING } from "../../redux/playSlice";
  
 
-const SelectInput = () => {
+const SelectInput = ({music}) => {
 
     const dis = useDispatch()
     const songList = useSelector(state => state.songSlice.songs)
@@ -20,6 +21,7 @@ const SelectInput = () => {
     }
 
     useEffect(()=>{
+      
       if(data){
         const reader = new FileReader();
         reader.readAsArrayBuffer(data)
@@ -33,7 +35,9 @@ const SelectInput = () => {
             dis(DEL_SONG())
             const blob = new Blob([buffer], { type: "audio/wav" });
             const url = window.URL.createObjectURL(blob);
-            dis(ADD_SONG({meta: JSON.stringify(metadata), song: url}));
+            music.current.src = url
+            music.current.play()
+            dis(ADD_SONG({meta: JSON.stringify(metadata)}));
             setErrMs('end')
             router.push('/player')
           });

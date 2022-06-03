@@ -1,0 +1,15 @@
+
+
+@keyframes move {
+    0%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(-100%);
+        left: 100%;
+    }
+}
+
+.moveAbleText{
+    animation: move linear 6s infinite alternate;
+}

@@ -3,7 +3,7 @@ import SongText from "../../components/addSong/text";
 import SelectInput from "../../components/selectSong/inputs";
 
 
-const AddSong = () => {
+const AddSong = ({music}) => {
 
     return (
       <div className={` flex justify-center items-center relative h-screen w-full bg-[#151515] overflow-hidden`}>
@@ -12,7 +12,7 @@ const AddSong = () => {
 
         <div className=" w-full z-50 flex justify-evenly items-center ">
             <SongText/>
-            <SelectInput/>
+            <SelectInput music={music}/>
         </div>
 
       </div>

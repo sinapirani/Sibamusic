@@ -5,6 +5,7 @@ import {useRouter} from 'next/router'
 import * as musicMetaData from 'music-metadata-browser'
 import { arrayBufferToBlob } from "blob-util";
 import { IS_PLAYING } from "../../redux/playSlice";
+import { useTag } from "../../hooks/useTag";
  
 
 const SelectInput = ({music}) => {
@@ -15,35 +16,17 @@ const SelectInput = ({music}) => {
     const [errMs, setErrMs] = useState('')
     const input = useRef(null)
     const router = useRouter()
+    const tag = useTag()
 
     const inputChange = (e) => {
       setData(e.target.files[0])
     }
 
     useEffect(()=>{
-      
-      if(data){
-        const reader = new FileReader();
-        reader.readAsArrayBuffer(data)
-        reader.onload = () => {
-          const buffer = reader.result;
-          console.log(buffer);
-          const type = data.type;
-          const blob = arrayBufferToBlob(buffer, type);
-
-          musicMetaData.parseBlob(blob).then((metadata) => {
-            dis(DEL_SONG())
-            const blob = new Blob([buffer], { type: "audio/wav" });
-            const url = window.URL.createObjectURL(blob);
-            music.current.src = url
-            music.current.play()
-            dis(ADD_SONG({meta: JSON.stringify(metadata)}));
-            setErrMs('end')
-            router.push('/player')
-          });
-        }
+      if(data && music.current){
+        tag(data,music)
       }
-    },[data])
+    },[data, music])
 
 
     const err = () => {

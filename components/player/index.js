@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useTransition } from "react";
 import style from  '../../styles/player.module.css'
 import PlayerDuration from "./duration";
+import PlayerCover from './cover'
 
 
 const PlayerAudio = ({picChanger, music, timeOfMusic}) => {
@@ -20,7 +21,6 @@ const PlayerAudio = ({picChanger, music, timeOfMusic}) => {
   const title = useRef()
 
   useEffect(()=>{
-    console.log('rerendered');
   })
 
 
@@ -57,13 +57,8 @@ const PlayerAudio = ({picChanger, music, timeOfMusic}) => {
         <PlayerDuration music={music} timeOfMusic={timeOfMusic} />
       </div>
 
-      <div className="w-1/2 flex-shrink-0 flex justify-center items-center">
-        <img
-          className="rounded-full w-[400px] h-[400px] "
-          ref={picRef}
-          alt="cover of music"
-        />
-      </div>
+      <PlayerCover img={''} ref={picRef} />
+
     </div>
   );
 

@@ -32,10 +32,6 @@ const PlayerDuration = ({music}) => {
         }
     },[music])
 
-    useEffect(()=>{
-        console.log('time',time);
-    },[time])
-
     return (
       <>
         <div ref={parentRef} className="w-2/3 h-2 rounded-full mt-12 bg-white">

@@ -26,9 +26,11 @@ const PlayerDuration = ({music}) => {
         isMouseDown ? music.current.currentTime = ((e.target.value * music.current.duration) / 100) : ''
     }
 
+
     useEffect(()=>{
         if(music.current && parentRef.current){
             music.current.ontimeupdate = timeUpdate
+
         }
     },[music])
 

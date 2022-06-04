@@ -1,15 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
 
+import { useEffect } from "react";
+
 
 const PlayerNext = ({music}) => {
 
+
     const clicked = () => {
-        if(music?.current)
-            music?.current.currentTime += 5
+            console.log('clicked nezr');
+            music.current.currentTime += 5
+        
     }
 
     return(
-        <img onCanPlay={clicked} src="/player/next.png" width={60} height={50} alt="next for 5 second" />
+        <img onClick={clicked} src="/player/next.png" width={60} height={50} alt="next for 5 second" />
     )
 
 }

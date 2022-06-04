@@ -7,6 +7,7 @@ import PlayerDuration from "./duration";
 import PlayerCover from './cover'
 import PlayerTitle from './title'
 import PlayerDescription from "./descrition";
+import PlayerControls from "./controls/controls";
 
 
 const PlayerAudio = ({picChanger, music, timeOfMusic}) => {
@@ -40,11 +41,12 @@ const PlayerAudio = ({picChanger, music, timeOfMusic}) => {
   },[data])
 
   return (
-    <div className="flex flex-row-reverse justify-evenly items-center w-full  ">
-      <div className="w-1/2 flex-shrink-0  flex flex-col justify-center items-start ">
+    <div className="flex lg:flex-row-reverse flex-col-reverse lg:justify-evenly justify-center items-center w-full  ">
+      <div className="lg:w-1/2 w-5/6 mt-5 flex-shrink-0 flex flex-col justify-center items-center lg:items-start ">
         <PlayerTitle ref={title} isMoveAble={isMoveAble} data={data} />
-        <PlayerDescription data={data}/>
+        <PlayerDescription data={data} />
         <PlayerDuration music={music} timeOfMusic={timeOfMusic} />
+        <PlayerControls/>
       </div>
       <PlayerCover img={""} ref={picRef} />
     </div>

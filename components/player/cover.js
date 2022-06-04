@@ -4,14 +4,11 @@ import { memo } from "react";
 
 const PlayerCover = forwardRef( ({img},ref) => {
 
-    useEffect(()=>{
-        console.log('cover rendered');   
-    })
 
     return (
-      <div className="w-1/2 flex-shrink-0 flex justify-center items-center">
+      <div className="lg:w-1/2 w-full flex-shrink-0 flex justify-center items-center">
         <img
-          className="rounded-full w-[400px] h-[400px] "
+          className="rounded-full lg:w-[400px] lg:h-[400px] w-[70vw] h-[70vw] "
           ref={ref}
           alt="cover of music"
         />

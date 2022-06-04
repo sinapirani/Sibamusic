@@ -34,10 +34,10 @@ const PlayerDuration = ({music}) => {
 
     return (
       <>
-        <div ref={parentRef} className="w-2/3 h-2 rounded-full mt-12 bg-white">
+        <div ref={parentRef} className="lg:w-2/3 w-full lg:h-2 h-4 rounded-full mt-12 bg-white overflow-hidden">
           {music.current ? (
             <div
-              className="w-full h-2 bg-red-500 outline-none rounded-full "
+              className="w-full lg:h-2 h-4 bg-red-500 outline-none rounded-full "
               style={{width: time}}
               onMouseUp={rangeMouseUp}
               onMouseDown={rangeMouseDown}
@@ -49,13 +49,6 @@ const PlayerDuration = ({music}) => {
             ""
           )}
         </div>
-        <button
-          onClick={() => {
-            music.current.play();
-          }}
-        >
-          play
-        </button>
       </>
     );
 

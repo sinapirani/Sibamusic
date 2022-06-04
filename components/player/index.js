@@ -3,9 +3,10 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { useTransition } from "react";
-import style from  '../../styles/player.module.css'
 import PlayerDuration from "./duration";
 import PlayerCover from './cover'
+import PlayerTitle from './title'
+import PlayerDescription from "./descrition";
 
 
 const PlayerAudio = ({picChanger, music, timeOfMusic}) => {
@@ -41,24 +42,11 @@ const PlayerAudio = ({picChanger, music, timeOfMusic}) => {
   return (
     <div className="flex flex-row-reverse justify-evenly items-center w-full  ">
       <div className="w-1/2 flex-shrink-0  flex flex-col justify-center items-start ">
-        <div
-          className="mb-2 w-full text-white text-5xl font-extrabold max-w-[15ch] whitespace-nowrap overflow-hidden"
-          suppressContentEditableWarning={true}
-          contentEditable
-        >
-          <p ref={title} className={isMoveAble ? style.moveAbleText : ""}>
-            {data?.common?.title}
-          </p>
-        </div>
-        <p className=" w-full text-white text-xl">
-          {data?.common?.albumartist || data?.common?.artist}
-        </p>
-
+        <PlayerTitle ref={title} isMoveAble={isMoveAble} data={data} />
+        <PlayerDescription data={data}/>
         <PlayerDuration music={music} timeOfMusic={timeOfMusic} />
       </div>
-
-      <PlayerCover img={''} ref={picRef} />
-
+      <PlayerCover img={""} ref={picRef} />
     </div>
   );
 

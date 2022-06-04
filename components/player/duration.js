@@ -41,7 +41,7 @@ const PlayerDuration = ({music}) => {
         <div ref={parentRef} className="w-2/3 h-2 rounded-full mt-12 bg-white">
           {music.current ? (
             <div
-              className="w-full h-2 bg-blue-400 outline-none "
+              className="w-full h-2 bg-red-500 outline-none rounded-full "
               style={{width: time}}
               onMouseUp={rangeMouseUp}
               onMouseDown={rangeMouseDown}

@@ -46,7 +46,7 @@ const PlayerAudio = ({picChanger, music, timeOfMusic}) => {
         <PlayerTitle ref={title} isMoveAble={isMoveAble} data={data} />
         <PlayerDescription data={data} />
         <PlayerDuration music={music} timeOfMusic={timeOfMusic} />
-        <PlayerControls/>
+        <PlayerControls music={music}/>
       </div>
       <PlayerCover img={""} ref={picRef} />
     </div>

@@ -4,7 +4,7 @@ import PlayerPlay from "./play"
 
 const PlayerControls = ({music}) => {
     return(
-        <PlayerPlay/>
+        <PlayerPlay music={music}/>
     )
 }
 

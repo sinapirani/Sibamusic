@@ -15,7 +15,6 @@ export const useTag = (data, music) => {
         reader.readAsArrayBuffer(data);
         reader.onload = () => {
           const buffer = reader.result;
-          console.log(buffer);
           const type = data.type;
           const blob = arrayBufferToBlob(buffer, type);
 

@@ -11,5 +11,5 @@
 }
 
 .moveAbleText{
-    animation: move linear 6s infinite alternate;
+    animation: move linear 10s infinite alternate;
 }

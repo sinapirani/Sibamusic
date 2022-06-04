@@ -1,17 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useRef, useState } from "react";
-import mp3tag from "mp3tag.js";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { arrayBufferToBlob } from "blob-util";
 import { useRouter } from "next/router";
-import { IS_PLAYING } from "../../redux/playSlice";
 import { useTransition } from "react";
 import style from  '../../styles/player.module.css'
-import { ADD_AUDIO } from "../../redux/audioSlice";
+import PlayerDuration from "./duration";
 
 
-const PlayerAudio = ({picChanger}) => {
+const PlayerAudio = ({picChanger, music, timeOfMusic}) => {
 
   const value = useSelector((state) => state.songSlice.songs);
   const isPlaying = useSelector(state => state.playSlice.isPlaying)
@@ -29,7 +25,7 @@ const PlayerAudio = ({picChanger}) => {
 
 
   useEffect(()=>{
-    value?.song ? setData(JSON.parse(value.meta)) : router.push("selectSong");
+    value?.meta ? setData(JSON.parse(value.meta)) : ''
   },[value])
 
   useEffect(()=>{
@@ -43,17 +39,30 @@ const PlayerAudio = ({picChanger}) => {
   },[data])
 
   return (
-    <div className="flex flex-row-reverse justify-evenly items-center w-full ">
-
-      <div>
-        <div className="mb-2 text-white text-5xl font-extrabold max-w-[15ch] whitespace-nowrap overflow-hidden   " suppressContentEditableWarning={true} contentEditable>
-          <p ref={title} className={ isMoveAble ? style.moveAbleText : ''}>{data?.common?.title}</p>
+    <div className="flex flex-row-reverse justify-evenly items-center w-full  ">
+      <div className="w-1/2 flex-shrink-0  flex flex-col justify-center items-start ">
+        <div
+          className="mb-2 w-full text-white text-5xl font-extrabold max-w-[15ch] whitespace-nowrap overflow-hidden"
+          suppressContentEditableWarning={true}
+          contentEditable
+        >
+          <p ref={title} className={isMoveAble ? style.moveAbleText : ""}>
+            {data?.common?.title}
+          </p>
         </div>
-        <p className="text-white text-xl">{data?.common?.albumartist || data?.common?.artist}</p>
+        <p className=" w-full text-white text-xl">
+          {data?.common?.albumartist || data?.common?.artist}
+        </p>
+
+        <PlayerDuration music={music} timeOfMusic={timeOfMusic} />
       </div>
 
-      <div>
-        <img className="rounded-full w-[400px] h-[400px] " ref={picRef} alt='cover of music' />
+      <div className="w-1/2 flex-shrink-0 flex justify-center items-center">
+        <img
+          className="rounded-full w-[400px] h-[400px] "
+          ref={picRef}
+          alt="cover of music"
+        />
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { useTransition } from "react";
@@ -8,6 +8,7 @@ import PlayerCover from './cover'
 import PlayerTitle from './title'
 import PlayerDescription from "./descrition";
 import PlayerControls from "./controls/controls";
+import PlayerLoop from "./controls/loop";
 
 
 const PlayerAudio = ({picChanger, music, timeOfMusic}) => {
@@ -54,4 +55,4 @@ const PlayerAudio = ({picChanger, music, timeOfMusic}) => {
 
 }
 
-export default PlayerAudio
+export default memo(PlayerAudio)

@@ -2,6 +2,9 @@
 
 .btn:active{
     scale: 0.6;
-    transform: rotate(10);
-    transition-duration: 9s;
+    transform: rotate(10deg);
+}
+
+.btn{
+    transition: .1s ease-in all;
 }

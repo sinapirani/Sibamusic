@@ -1,0 +1,8 @@
+
+.cover{
+    transition: .2s ease-in all;
+}
+
+.cover:hover{
+    transform: scale(.9);
+}

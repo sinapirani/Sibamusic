@@ -1,4 +1,5 @@
 import { memo } from "react"
+import style from '../../../styles/btns.module.css'
 
 
 const PlayerPrev = ({music}) => {
@@ -10,6 +11,7 @@ const PlayerPrev = ({music}) => {
 
     return (
       <img
+        className={style.btn}
         onClick={prev}
         height={60}
         width={60}

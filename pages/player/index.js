@@ -12,7 +12,7 @@ const Player = ({ music }) => {
 
   return (
     <div className=" relative w-full h-screen overflow-hidden m-0 p-0 flex justify-center items-center bg-black ">
-      <div style={{ backgroundImage: pic }} className={`absolute w-full h-screen bg-red-600 z-20 overflow-hidden  bg-cover bg-center blur-md scale-150 `}></div>
+      <div style={{ backgroundImage: pic }} className={`absolute w-full h-screen bg-red-600 z-20 overflow-hidden  bg-cover bg-center blur-[6px] scale-150 `}></div>
 
       <div className="absolute flex justify-center items-center w-full h-screen box-border bg-[rgba(0,0,0,80%)] overflow-hidden z-40">
 

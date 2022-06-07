@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { memo, useEffect, useState } from "react"
 import { useTransition } from "react"
+import style from '../../../styles/btns.module.css'
 
 const PlayerPlay = ({music}) => {
 
@@ -30,6 +31,7 @@ const PlayerPlay = ({music}) => {
       <>
         {isPlay ? (
           <img
+            className={style.btn}
             onClick={pauseClicked}
             height={70}
             width={70}
@@ -38,6 +40,7 @@ const PlayerPlay = ({music}) => {
           />
         ) : (
           <img
+            className={style.btn}
             onClick={playClicked}
             height={70}
             width={70}

@@ -23,7 +23,35 @@ const PlayerAudio = ({picChanger, music, timeOfMusic}) => {
   const [isMoveAble, setIsMoveAble] = useState(false)
   const title = useRef()
   const [context, setContext] = useState()
+  const [src, setSrc] = useState()
+  const [analyser, setAnalyser] = useState()
+  const [frequency, setFrequency] = useState()
 
+  useEffect(()=>{
+    setContext(new (window.AudioContext || window.webkitAudioContext)());
+  },[])
+
+  useEffect(()=>{
+    context && typeof context.source == 'undefined' ? setSrc(context.createMediaElementSource(music.current)) : ''
+    context ? setAnalyser(context.createAnalyser()) : ''
+  },[context])  
+
+  useEffect(()=>{
+    if(context && analyser && src){
+      console.log('ok');
+      src.connect(analyser); 
+      analyser.connect(context.destination)
+      setFrequency(new Uint8Array(analyser.frequencyBinCount));
+    }
+  },[analyser])
+
+  useEffect(()=>{
+    console.log('anal',analyser);
+    console.log('fre',frequency);
+    console.log('con',context);
+    console.log('src',src);
+    context ? console.log("context src", context.source) : ''
+  },[frequency])
 
 
 

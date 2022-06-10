@@ -68,7 +68,7 @@ const PlayerAudio = ({picChanger, music}) => {
 
   const visual = () => {
     analyser?.getByteTimeDomainData(frequency);
-    borderRef.current ? borderRef.current.style.border = `${(frequency[100])/150})px` : ''
+    borderRef.current ? borderRef.current.style.border = `${(frequency[1]-130)}px solid rgb(239, 68, 68)` : ''
     // glitch.current ? glitch.current.style.opacity = `${(frequency[1])-40}%` : ''
     // console.log('frequency 5', frequency[5]/100);
     anim.current = requestAnimationFrame(visual);
@@ -76,7 +76,7 @@ const PlayerAudio = ({picChanger, music}) => {
 
   useEffect(()=>{
     if (picRef.current && data && data?.common?.picture) {
-      startTransition(()=>{
+      startTransition(()=>{ 
         picRef.current.src = `data:image/png;base64,${btoa(data?.common?.picture[0].data.data.reduce((data, byte) => data + String.fromCharCode(byte), ''))}`
         picChanger(`data:image/png;base64,${btoa(data?.common?.picture[0].data.data.reduce((data, byte) => data + String.fromCharCode(byte), ''))}`) 
         title.current.textContent.length > 8 ? setIsMoveAble(true) : setIsMoveAble(false);

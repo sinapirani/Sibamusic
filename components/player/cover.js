@@ -14,7 +14,7 @@ const PlayerCover = forwardRef( ({img},ref) => {
           alt="cover of music"
         />
       </div>
-    );
+    ); 
 })
 
 PlayerCover.displayName = 'playerCover'

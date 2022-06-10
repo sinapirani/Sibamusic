@@ -33,6 +33,14 @@ const SelectInput = ({music}) => {
       setErrMs('please insert a valid url!')
     }
 
+    const goToPlayer = () => {
+      if(music.current?.duration){
+        router.push('/player')
+      }else{
+        setErrMs('select a song first!')
+      }
+    }
+
 
 
     return (
@@ -45,13 +53,17 @@ const SelectInput = ({music}) => {
           ref={input}
           onChange={inputChange}
         />
-
         <label
           htmlFor="input"
           className=" flex justify-center items-center text-center h-24 w-[30vw] bg-[#016F7E] rounded-[2rem] text-white text-4xl font-extrabold outline-none "
         >
           Click to select
         </label>
+
+        <button onClick={goToPlayer} className=" flex justify-center items-center text-center h-24 w-[30vw] bg-[#016F7E] rounded-[2rem] text-white text-4xl font-extrabold outline-none ">
+          Go to Player
+        </button>
+
         <p className=" text-red-500">{errMs}</p>
       </div>
     );

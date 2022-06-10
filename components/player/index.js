@@ -22,9 +22,9 @@ const PlayerAudio = ({picChanger, music, timeOfMusic}) => {
   const [isPending, startTransition] = useTransition();
   const [isMoveAble, setIsMoveAble] = useState(false)
   const title = useRef()
+  const [context, setContext] = useState()
+  
 
-  useEffect(()=>{
-  })
 
 
   useEffect(()=>{

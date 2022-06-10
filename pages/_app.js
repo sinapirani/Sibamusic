@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 
 function MyApp({ Component, pageProps }) {
   
-  const music = useRef()
+  const music = useRef( typeof Audio != 'undefined' ? new Audio() : false )
   // const [timeOfMusic, setTimeOfMusic] = useState(0)
 
 

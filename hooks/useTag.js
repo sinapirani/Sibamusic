@@ -11,23 +11,25 @@ export const useTag = (data, music) => {
     const router = useRouter()
 
     const dispatchTags = (data, music) => {
-        const reader = new FileReader();
-        reader.readAsArrayBuffer(data);
-        reader.onload = () => {
-          const buffer = reader.result;
-          const type = data.type;
-          const blob = arrayBufferToBlob(buffer, type);
+      music.current.pause()
+      music.current = new Audio()
+      const reader = new FileReader();
+      reader.readAsArrayBuffer(data);
+      reader.onload = () => {
+        const buffer = reader.result;
+        const type = data.type;
+        const blob = arrayBufferToBlob(buffer, type);
 
-          musicMetaData.parseBlob(blob).then((metadata) => {
-            dis(DEL_SONG());
-            const blob = new Blob([buffer], { type: "audio/wav" });
-            const url = window.URL.createObjectURL(blob);
-            music.current.src = url;
-            music.current.play();
-            dis(ADD_SONG({ meta: JSON.stringify(metadata) }));
-            router.push("/player");
-          });
-        };
+        musicMetaData.parseBlob(blob).then((metadata) => {
+          dis(DEL_SONG());
+          const blob = new Blob([buffer], { type: "audio/wav" });
+          const url = window.URL.createObjectURL(blob);
+          music.current.src = url;
+          music.current.play();
+          dis(ADD_SONG({ meta: JSON.stringify(metadata) }));
+          router.push("/player");
+        });
+      };
     }
     return dispatchTags
 }

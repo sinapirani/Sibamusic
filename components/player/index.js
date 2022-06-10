@@ -23,12 +23,13 @@ const PlayerAudio = ({picChanger, music, timeOfMusic}) => {
   const [isMoveAble, setIsMoveAble] = useState(false)
   const title = useRef()
   const [context, setContext] = useState()
-  
+
 
 
 
   useEffect(()=>{
     value?.meta ? setData(JSON.parse(value.meta)) : ''
+    !value?.meta ? router.push('selectSong') : ''
   },[value])
 
   useEffect(()=>{

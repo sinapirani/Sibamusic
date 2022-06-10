@@ -24,11 +24,13 @@ const PlayerAudio = ({picChanger, music}) => {
   const [isMoveAble, setIsMoveAble] = useState(false)
   const title = useRef()
   const [context, setContext] = useState()
+  const [contextSeted,setContextSeted] = useState()
   const [src, setSrc] = useState()
   const [analyser, setAnalyser] = useState()
   const [frequency, setFrequency] = useState()
   const anim = useRef()
   const glitch = useRef()
+  const borderRef = useRef()
 
 
   useEffect(()=>{
@@ -41,17 +43,19 @@ const PlayerAudio = ({picChanger, music}) => {
   }, [value]);
 
   useEffect(()=>{
-    isOk && !context ? setContext(new (window.AudioContext || window.webkitAudioContext)()) : ''
+    if(isOk && !context){
+      setContext(new (window.AudioContext || window.webkitAudioContext)())
+    }
   },[isOk])
 
   useEffect(()=>{
-    context && typeof context.source == 'undefined' ? setSrc(context.createMediaElementSource(music.current)) : ''
+    context && !src && typeof context.source == 'undefined' ? setSrc(context.createMediaElementSource(music.current)) : ''
     context ? setAnalyser(context.createAnalyser()) : ''
   },[context])  
 
-  useEffect(()=>{
-    if(context && analyser && src){
-      console.log('ok');
+  useEffect(()=>{ 
+    if(context && analyser && src && !frequency){ 
+      console.log('ok');     
       src.connect(analyser); 
       analyser.connect(context.destination)
       setFrequency(new Uint8Array(analyser.frequencyBinCount));
@@ -64,7 +68,7 @@ const PlayerAudio = ({picChanger, music}) => {
 
   const visual = () => {
     analyser?.getByteTimeDomainData(frequency);
-    picRef.current ? picRef.current.style.transform = `scale(${(frequency[100])/100})` : ''
+    borderRef.current ? borderRef.current.style.border = `${(frequency[100])/150})px` : ''
     // glitch.current ? glitch.current.style.opacity = `${(frequency[1])-40}%` : ''
     // console.log('frequency 5', frequency[5]/100);
     anim.current = requestAnimationFrame(visual);
@@ -90,7 +94,7 @@ const PlayerAudio = ({picChanger, music}) => {
         <PlayerDuration music={music} />
         <PlayerControls music={music}/>
       </div>
-      <PlayerCover ref={picRef} />
+      <PlayerCover ref={{picRef,borderRef}} />
     </div>
   );
 

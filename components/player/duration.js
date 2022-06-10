@@ -10,7 +10,7 @@ const PlayerDuration = ({ music }) => {
 
   const timeUpdate = () => {
     startTransition(() => {
-      setTime((music.current.currentTime * 100) / music.current.duration + "%");
+      typeof music.current != 'undefined' ? setTime((music?.current?.currentTime * 100) / music?.current?.duration + "%") : ''
     });
   };
 

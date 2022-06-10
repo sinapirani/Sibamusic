@@ -11,7 +11,7 @@ const PlayerPrev = ({music}) => {
 
     return (
       <img
-        className={style.btn}
+        className={style.btn + 'select-none'}
         onClick={prev}
         height={60}
         width={60}

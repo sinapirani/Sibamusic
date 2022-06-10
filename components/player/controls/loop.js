@@ -17,7 +17,7 @@ const PlayerLoop = ({music}) => {
     }
 
     return(
-        <img onClick={click} style={{opacity: isLoop? '1' : '0.2' }} src="/player/loop.png" height={30} width={30} alt="" />
+        <img className=" select-none" onClick={click} style={{opacity: isLoop? '1' : '0.2' }} src="/player/loop.png" height={30} width={30} alt="" />
     )
 
 }

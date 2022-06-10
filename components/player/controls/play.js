@@ -31,7 +31,7 @@ const PlayerPlay = ({music}) => {
       <>
         {isPlay ? (
           <img
-            className={style.btn}
+            className={style.btn + 'select-none'}
             onClick={pauseClicked}
             height={70}
             width={70}
@@ -40,7 +40,7 @@ const PlayerPlay = ({music}) => {
           />
         ) : (
           <img
-            className={style.btn}
+            className={style.btn + 'select-none'}
             onClick={playClicked}
             height={70}
             width={70}

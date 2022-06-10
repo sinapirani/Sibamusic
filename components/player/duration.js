@@ -1,3 +1,4 @@
+
 import { memo, useEffect, useRef, useState, useTransition } from "react"
 
 const PlayerDuration = ({music}) => {
@@ -9,9 +10,9 @@ const PlayerDuration = ({music}) => {
     const [isPending, startTransition ] = useTransition()
     
     const timeUpdate = () => {
-         startTransition(() =>{
-           setTime((music.current.currentTime * 100) / music.current.duration + "%")
-        })
+      startTransition(() =>{
+        setTime((music.current.currentTime * 100) / music.current.duration + "%")
+      })
     }
 
     const rangeMouseDown = (e) => {
@@ -22,12 +23,17 @@ const PlayerDuration = ({music}) => {
         setIsMouseDown(false)
     }
 
-    const rangeClicked = (e) => {
-        isMouseDown ? music.current.currentTime = ((e.target.value * music.current.duration) / 100) : ''
+    const rangeMouseLeave = () => {
+      setIsMouseDown(false)
     }
 
-    const fuck = ()=>{
-      console.log('fuck');
+    const rangeMove = (e) => {
+      isMouseDown ? rangeRef.current.style.width = (e.pageX - parentRef.current.getBoundingClientRect().left) + 'px' : ''
+    }
+
+    const rangeClicked = (e) => {
+        rangeRef.current.style.width = (e.pageX - parentRef.current.getBoundingClientRect().left) + 'px'
+        music.current.currentTime = ((rangeRef.current.offsetWidth * 100) / parentRef.current.offsetWidth) * music.current.duration / 100
     }
 
 
@@ -40,20 +46,27 @@ const PlayerDuration = ({music}) => {
 
     return (
       <>
-        <div ref={parentRef} className="lg:w-2/3 w-full lg:h-2 h-4 rounded-full mt-12 bg-white overflow-hidden">
-          {music.current ? (
-            <div
-              className="w-full lg:h-2 h-4 bg-red-500 outline-none rounded-full "
-              style={{width: time}}
-              onMouseUp={rangeMouseUp}
-              onMouseDown={rangeMouseDown}
-              onMouseMove={rangeClicked}
-              ref={rangeRef}
-              type="range"
-            ></div>
-          ) : (
-            ""
-          )}
+        <div
+          ref={parentRef}
+          onMouseDown={rangeMouseDown}
+          onMouseUp={rangeMouseUp}
+          onMouseMove={rangeMove}
+          onMouseLeave={rangeMouseLeave}
+          onClick={rangeClicked}
+          className="lg:w-2/3 w-full lg:h-4 h-4 rounded-full mt-12 bg-white overflow-hidden"
+        >
+
+        {music.current ? (
+          <div
+            className="w-full lg:h-4 h-4 bg-red-500 outline-none rounded-full "
+            style={{ width: time }}
+            ref={rangeRef}
+            type="range"
+          ></div>
+        ) : (
+          ""
+        )}
+
         </div>
       </>
     );

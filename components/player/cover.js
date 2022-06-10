@@ -7,9 +7,9 @@ const PlayerCover = forwardRef( ({img},ref) => {
 
 
     return (
-      <div className="lg:w-1/2 w-full flex-shrink-0 flex justify-center items-center">
+      <div className="lg:w-1/2 w-full flex-shrink-0 flex justify-center items-center select-none">
         <img
-          className={` ${style.cover} rounded-full lg:w-[400px] lg:h-[400px] w-[70vw] h-[70vw] `}
+          className={` ${style.cover} rounded-full lg:w-[500px] lg:h-[500px] w-[70vw] h-[70vw] `}
           ref={ref}
           alt="cover of music"
         />

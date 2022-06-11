@@ -1,14 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {ADD_SONG, DEL_SONG} from '../../redux/songSlice'
 import {useRouter} from 'next/router'
-import * as musicMetaData from 'music-metadata-browser'
-import { arrayBufferToBlob } from "blob-util";
-import { IS_PLAYING } from "../../redux/playSlice";
 import { useTag } from "../../hooks/useTag";
  
 
-const SelectInput = ({music}) => {
+const SelectInput = ({music, setSrc, setContext, setAnalyser}) => {
 
     const dis = useDispatch()
     const songList = useSelector(state => state.songSlice.songs)
@@ -24,6 +20,9 @@ const SelectInput = ({music}) => {
 
     useEffect(()=>{
       if(data && music.current){
+        setAnalyser(false)
+        setContext(false)
+        setSrc(false)
         tag(data,music)
       }
     },[data, music])

@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Provider store={store}>
-      <audio onChange={()=>console.log('changed')} ref={music} className="hidden"></audio>
+      <audio ref={music} className="hidden"></audio>
       <Component
         {...pageProps}
         music={music}

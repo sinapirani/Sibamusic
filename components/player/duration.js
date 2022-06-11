@@ -9,9 +9,7 @@ const PlayerDuration = ({ music }) => {
   const [isPending, startTransition] = useTransition();
 
   const timeUpdate = () => {
-    startTransition(() => {
-      typeof music.current != 'undefined' ? setTime((music?.current?.currentTime * 100) / music?.current?.duration + "%") : ''
-    });
+    typeof music.current != 'undefined' ? setTime((music?.current?.currentTime * 100) / music?.current?.duration + "%") : ''
   };
 
   const rangeMouseDown = (e) => {
@@ -24,14 +22,14 @@ const PlayerDuration = ({ music }) => {
       ? (rangeRef.current.style.width =
           e.pageX - parentRef.current.getBoundingClientRect().left + "px")
       : "";
+    music.current.ontimeupdate = timeUpdate;
   };
 
   const rangeMove = (e) => {
-    isMouseDown ? (music.current.ontimeupdate = () => 0) : "";
-    isMouseDown
-      ? (rangeRef.current.style.width =
-          e.pageX - parentRef.current.getBoundingClientRect().left + "px")
-      : "";
+    if(isMouseDown){
+      music.current.ontimeupdate = () => 0;
+      (rangeRef.current.style.width = e.pageX - parentRef.current.getBoundingClientRect().left + "px")
+    }
   };
 
   const rangeLeave = (e) => {
@@ -40,7 +38,7 @@ const PlayerDuration = ({ music }) => {
           e.pageX - parentRef.current.getBoundingClientRect().left + "px")
       : "";
     setIsMouseDown(false);
-    
+    music.current.ontimeupdate = timeUpdate;
   }
   
   const rangeClicked = (e) => {

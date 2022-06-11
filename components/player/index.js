@@ -67,7 +67,9 @@ const PlayerAudio = ({picChanger, music, setSrc, src, context, setContext, analy
   useEffect(()=>{
     if (picRef.current && data && data?.common?.picture) {
       startTransition(()=>{ 
-        picRef.current.src = `data:image/png;base64,${btoa(data?.common?.picture[0].data.data.reduce((data, byte) => data + String.fromCharCode(byte), ''))}`
+        if (data?.common?.picture[0]) {
+          picRef.current.src = `data:image/png;base64,${btoa(data?.common?.picture[0].data.data.reduce((data, byte) => data + String.fromCharCode(byte), ''))}`
+        }
         picChanger(`data:image/png;base64,${btoa(data?.common?.picture[0].data.data.reduce((data, byte) => data + String.fromCharCode(byte), ''))}`) 
         title.current.textContent.length > 8 ? setIsMoveAble(true) : setIsMoveAble(false);
       })

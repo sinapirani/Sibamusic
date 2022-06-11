@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const playSlice = createSlice({
     name: 'playSlice',
     initialState:{
-        isPlaying: false
+        isPlaying: true
     }, 
     reducers: {
         IS_PLAYING: (state, action) => {

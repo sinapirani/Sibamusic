@@ -2,22 +2,26 @@
 import { memo, useEffect, useState } from "react"
 import { useTransition } from "react"
 import style from '../../../styles/btns.module.css'
+import {IS_PLAYING} from '../../../redux/playSlice'
+import { useDispatch, useSelector } from "react-redux"
 
 const PlayerPlay = ({music}) => {
 
-    const [isPlay, setPlay] = useState( true )
     const [isPending, startTransition] = useTransition()
-
+    const isPlay = useSelector((state) => state.playSlice.isPlaying);
+    const dis = useDispatch()
     
     const playClicked = () => {
-            setPlay(true)
-            music?.current.play()
+      dis(IS_PLAYING(true)) 
     }
     
     const pauseClicked = () => {
-            setPlay(false)
-            music.current.pause()
+      dis(IS_PLAYING(false)); 
     }
+
+    useEffect(()=>{
+      isPlay ? music.current.play() : music.current.pause();
+    },[isPlay])
 
     const musicEnded = () => {
         startTransition(()=>{

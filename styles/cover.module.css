@@ -2,7 +2,10 @@
 .cover{
     transition: .2s ease-in all;
 }
-
-.cover:hover{
+.coversCover:hover + .cover{
     transform: scale(.9);
+    background-color: black;
+}
+.coversCover:hover + .cover{
+    transform: scale(4);
 }

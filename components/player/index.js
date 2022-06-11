@@ -49,7 +49,7 @@ const PlayerAudio = ({picChanger, music}) => {
   },[isOk])
 
   useEffect(()=>{
-    context && !src && typeof context.source == 'undefined' ? setSrc(context.createMediaElementSource(music.current)) : ''
+    context && !src ? setSrc(context.createMediaElementSource(music.current)) : ''
     context ? setAnalyser(context.createAnalyser()) : ''
   },[context])  
 
@@ -88,6 +88,7 @@ const PlayerAudio = ({picChanger, music}) => {
     <div className=" relative flex lg:flex-row-reverse flex-col-reverse lg:justify-evenly justify-center items-center w-full  ">
       
       {/* <div ref={glitch} className="absolute pointer-events-none -z-10 lg:w-full lg:h-screen bg-green-400/60 blur-md"></div> */}
+      <div className="absolute lg:w-[500px] lg:h-[500px] bg-red-700 blur-[230px] rounded-full right-0 bottom-0 -z-10  "></div>
       <div className="lg:w-1/2 w-5/6 mt-5 flex-shrink-0 flex flex-col justify-center items-center lg:items-start ">
         <PlayerTitle ref={title} isMoveAble={isMoveAble} data={data} />
         <PlayerDescription data={data} />

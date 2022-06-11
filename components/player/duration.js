@@ -34,6 +34,15 @@ const PlayerDuration = ({ music }) => {
       : "";
   };
 
+  const rangeLeave = (e) => {
+    isMouseDown
+      ? (rangeRef.current.style.width =
+          e.pageX - parentRef.current.getBoundingClientRect().left + "px")
+      : "";
+    setIsMouseDown(false);
+    
+  }
+  
   const rangeClicked = (e) => {
     rangeRef.current.style.width =
       e.pageX - parentRef.current.getBoundingClientRect().left + "px";
@@ -50,20 +59,20 @@ const PlayerDuration = ({ music }) => {
     }
   }, [music]);
 
-  useEffect(() => {
-    if (document) {
-      document.body.onmouseup = (e) => {
-        isMouseDown
-          ? (music.current.currentTime =
-              (((rangeRef.current.offsetWidth * 100) /
-                parentRef.current.offsetWidth) *
-                music.current.duration) /
-              100)
-          : "";
-        setIsMouseDown(false);
-      };
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (document) {
+  //     document.body.onmouseup = (e) => {
+  //       isMouseDown
+  //         ? (music.current.currentTime =
+  //             (((rangeRef.current.offsetWidth * 100) /
+  //               parentRef.current.offsetWidth) *
+  //               music.current.duration) /
+  //             100)
+  //         : "";
+  //       setIsMouseDown(false);
+  //     };
+  //   }
+  // }, []);
 
   return (
     <>
@@ -72,6 +81,7 @@ const PlayerDuration = ({ music }) => {
         onMouseDown={rangeMouseDown}
         onMouseUp={rangeMouseUp}
         onMouseMove={rangeMove}
+        onMouseLeave={rangeLeave}
         onClick={rangeClicked}
         className="lg:w-2/3 w-full lg:h-4 h-4 rounded-full mt-12 bg-white overflow-hidden"
       >

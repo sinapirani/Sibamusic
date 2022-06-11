@@ -29,7 +29,7 @@ const PlayerCover = forwardRef((props,ref) => {
           ref={ref.picRef}
           alt="cover of music"
         />
-        <div className={` ${style.coversCover} flex justify-center items-center absolute rounded-full lg:w-[400px] lg:h-[400px] w-[70vw] h-[70vw]  opacity-0 transition-[5s] hover:opacity-100 hover:backdrop-blur-lg hover:backdrop-grayscale-[20]`}>
+        <div className={` ${style.coversCover} flex justify-center items-center absolute rounded-full lg:w-[400px] lg:h-[400px] w-[70vw] h-[70vw]  opacity-0 transition-[5s] hover:opacity-100 hover:backdrop-blur-lg`}>
           <img draggable={false} onClick={imgClickHandler} src={image} className="lg:w-[100px] lg:h-[100px] w-[20vw] h-[20vw] rounded-full absolute select-none  " />
         </div>
     </div>

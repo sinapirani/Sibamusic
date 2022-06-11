@@ -3,8 +3,9 @@ import PlayerAudio from "../../components/player";
 
 
 
-const Player = ({ music }) => {
+const Player = ({ music, setSrc, src, context, setContext, analyser, setAnalyser }) => {
   const [pic, setPic] = useState("url(/home/bg.jpg)");
+
 
   const picChanger = (pic) => {
     setPic(`url(${pic})`);
@@ -18,7 +19,7 @@ const Player = ({ music }) => {
 
         <div className=" absolute h-[150vh] w-[150vh] bg-[#220036] opacity-25 blur-[188px] rounded-full z-0 "></div>
         <div className=" relative w-full h-screen flex justify-evenly items-center text-white z-50">
-          <PlayerAudio picChanger={picChanger} music={music} />
+          <PlayerAudio picChanger={picChanger} music={music} setSrc={setSrc} src={src} context={context} setContext={setContext} analyser={analyser} setAnalyser={setAnalyser} />
         </div>
 
       </div>

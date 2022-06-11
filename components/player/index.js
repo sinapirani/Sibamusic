@@ -11,7 +11,8 @@ import PlayerControls from "./controls/controls";
 import PlayerLoop from "./controls/loop";
 
 
-const PlayerAudio = ({picChanger, music}) => {
+const PlayerAudio = ({picChanger, music, setSrc, src, context, setContext, analyser, setAnalyser}) => {
+
 
   const value = useSelector((state) => state.songSlice.songs);
   const isPlaying = useSelector(state => state.playSlice.isPlaying)
@@ -23,19 +24,9 @@ const PlayerAudio = ({picChanger, music}) => {
   const [isPending, startTransition] = useTransition();
   const [isMoveAble, setIsMoveAble] = useState(false)
   const title = useRef()
-  const [context, setContext] = useState()
-  const [contextSeted,setContextSeted] = useState()
-  const [src, setSrc] = useState()
-  const [analyser, setAnalyser] = useState()
   const [frequency, setFrequency] = useState()
   const anim = useRef()
-  const glitch = useRef()
   const borderRef = useRef()
-
-
-  useEffect(()=>{
-    console.log(context);
-  },[context])
 
   useEffect(() => {
     !value?.meta ? router.push("selectSong") : setOk(true);
@@ -49,13 +40,14 @@ const PlayerAudio = ({picChanger, music}) => {
   },[isOk])
 
   useEffect(()=>{
-    context && !src ? setSrc(context.createMediaElementSource(music.current)) : ''
-    context ? setAnalyser(context.createAnalyser()) : ''
+    if(context && !src){
+      setSrc(context.createMediaElementSource(music.current))
+    }
+    context && !analyser ? setAnalyser(context.createAnalyser()) : ''
   },[context])  
 
   useEffect(()=>{ 
-    if(context && analyser && src && !frequency){ 
-      console.log('ok');     
+    if(context && analyser && src && !frequency){  
       src.connect(analyser); 
       analyser.connect(context.destination)
       setFrequency(new Uint8Array(analyser.frequencyBinCount));
@@ -69,8 +61,6 @@ const PlayerAudio = ({picChanger, music}) => {
   const visual = () => {
     analyser?.getByteTimeDomainData(frequency);
     borderRef.current ? borderRef.current.style.border = `${(frequency[1]-130)}px solid rgb(239, 68, 68)` : ''
-    // glitch.current ? glitch.current.style.opacity = `${(frequency[1])-40}%` : ''
-    // console.log('frequency 5', frequency[5]/100);
     anim.current = requestAnimationFrame(visual);
   } 
 

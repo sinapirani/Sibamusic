@@ -14,7 +14,7 @@ const AddSong = ({music,setContext,setAnalyser,setSrc}) => {
           className=" left-96 absolute h-[80vw] w-[80vw] rounded-full bg-[#016F7E] opacity-[13%] blur-[200px]"
         ></div>
 
-        <div className=" w-full z-50 flex justify-evenly items-center ">
+        <div className=" w-full z-50 flex lg:flex-row flex-col justify-evenly items-center ">
           <SongText />
           <SelectInput
             music={music}

@@ -3,7 +3,7 @@ import { useState } from "react"
 
 const PlayerLoop = ({music}) => {
 
-    const [isLoop, setLoop] = useState(false)
+    const [isLoop, setLoop] = useState(true)
 
     const click = () => {
         if(music?.current){

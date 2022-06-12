@@ -1,5 +1,5 @@
 
-import SongText from "../../components/addSong/text";
+import SongText from "../../components/selectSong/text";
 import SelectInput from "../../components/selectSong/inputs";
 
 

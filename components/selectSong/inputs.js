@@ -43,7 +43,7 @@ const SelectInput = ({music, setSrc, setContext, setAnalyser}) => {
 
 
     return (
-      <div className=" w-full flex flex-col justify-center items-center gap-y-3">
+      <div className=" w-full lg:w-auto flex flex-col justify-center items-center gap-y-3">
         <input
           accept=".mp3,audio/*"
           className="hidden"
@@ -54,12 +54,12 @@ const SelectInput = ({music, setSrc, setContext, setAnalyser}) => {
         />
         <label
           htmlFor="input"
-          className=" flex justify-center items-center text-center h-20 lg:h-24 w-[90%] lg:w-[30vw] bg-[#016F7E] rounded-[1rem] text-white text-3xl font-extrabold outline-none "
+          className=" flex justify-center items-center text-center h-16 lg:h-24 w-[90%] lg:w-[30vw] bg-red-600 rounded-[1rem] text-white text-2xl lg:text-3xl font-extrabold outline-none "
         >
           Click to select
         </label>
 
-        <button onClick={goToPlayer} className=" flex justify-center items-center text-center h-20 lg:h-24 w-[90%] lg:w-[30vw] bg-[#016F7E] rounded-[1rem] text-white text-3xl font-extrabold outline-none ">
+        <button onClick={goToPlayer} className=" flex justify-center items-center text-center h-16 lg:h-24 w-[90%] lg:w-[30vw] bg-red-600 rounded-[1rem] text-white text-2xl lg:text-3xl font-extrabold outline-none ">
           Go to Player
         </button>
 

@@ -1,7 +1,8 @@
 import '../styles/globals.css'
-import {Provider} from 'react-redux'
+import {Provider, useDispatch, useSelector} from 'react-redux'
 import store from '../redux/store'
 import { useEffect, useRef, useState } from 'react';
+import { IS_PLAYING } from '../redux/playSlice';
 
 function MyApp({ Component, pageProps }) {
   
@@ -21,17 +22,7 @@ function MyApp({ Component, pageProps }) {
   const setAnalyser = (analyser) => {
     setThisAnalyser(analyser)
   } 
-  // const [timeOfMusic, setTimeOfMusic] = useState(0)
 
-
-  // const updated = () => {
-  //   setTimeOfMusic((100 * music.current.currentTime) / music.current.duration );
-  //   console.log('time', timeOfMusic);
-  // }
-
-  // const changeTime = (value) => {
-  //   setTimeOfMusic(value)
-  // }
 
   return (
     <Provider store={store}>

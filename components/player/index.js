@@ -20,7 +20,6 @@ const PlayerAudio = ({picChanger, music, setSrc, src, context, setContext, analy
   const [isOk, setOk] = useState(false)
   const picRef = useRef()
   const router = useRouter()
-  const dis = useDispatch();
   const [isPending, startTransition] = useTransition();
   const [isMoveAble, setIsMoveAble] = useState(false)
   const title = useRef()

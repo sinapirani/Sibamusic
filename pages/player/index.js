@@ -1,11 +1,35 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import PlayerAudio from "../../components/player";
+import { IS_PLAYING } from "../../redux/playSlice";
 
 
 
 const Player = ({ music, setSrc, src, context, setContext, analyser, setAnalyser }) => {
-  const [pic, setPic] = useState("url(/home/bg.jpg)");
 
+  const [pic, setPic] = useState("url(/home/bg.jpg)");
+  const dis = useDispatch()
+  const isPlay = useSelector(state => state.playSlice.isPlaying)
+
+  const keyDown = (e) => {
+      if ((e.keyCode == "32")) {
+        console.log('clicked');
+        console.log('play', isPlay)
+        if (isPlay) {
+          music.current.pause();
+          dis(IS_PLAYING(false));
+        } else {
+          music.current.play();
+          dis(IS_PLAYING(true));
+        }
+      }
+    };
+
+    useEffect(() => {
+      if (document) {
+        document.onkeydown = keyDown;
+      }
+    }, []);
 
   const picChanger = (pic) => {
     setPic(`url(${pic})`);

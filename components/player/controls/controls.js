@@ -7,7 +7,7 @@ import PlayerPrev from "./prev";
 
 const PlayerControls = ({music}) => {
     return (
-      <div className="lg:w-full mt-4 flex justify-start items-center select-none">
+      <div className="lg:w-full mt-4 flex lg:flex-row flex-col justify-start items-center select-none">
         <div className=' flex mr-4'>
           <PlayerPrev music={music} />
           <PlayerPlay music={music} />

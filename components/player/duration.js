@@ -81,7 +81,7 @@ const PlayerDuration = ({ music }) => {
         onMouseMove={rangeMove}
         onMouseLeave={rangeLeave}
         onClick={rangeClicked}
-        className="lg:w-2/3 w-full lg:h-4 h-4 rounded-full mt-12 bg-white overflow-hidden"
+        className="lg:w-2/3 w-full lg:h-4 h-4 rounded-full lg:mt-12 mt-3 bg-white overflow-hidden"
       >
         <div
           className="w-full lg:h-4 h-4 bg-red-500 outline-none rounded-full "

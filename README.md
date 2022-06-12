@@ -2,7 +2,7 @@
 
 ## Demo
 
-![final_62a645a6bd3c1300c3ca4157_66304_AdobeExpress](https://user-images.githubusercontent.com/44531109/173253200-6b2f9006-5364-499e-8812-6d2dc32ab5cd.gif = 500*300)
+<img src='https://user-images.githubusercontent.com/44531109/173253200-6b2f9006-5364-499e-8812-6d2dc32ab5cd.gif' width=500 height=300/>
 
 # Siba MusicPlayer
 

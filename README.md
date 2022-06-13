@@ -9,12 +9,6 @@ a powerful and beautiful musicplayer created with React And Javascript AudioApi
 <img src='https://user-images.githubusercontent.com/44531109/173253532-7ba7d1d1-7ee9-4f8c-801a-a766d0a8ffa7.gif' width=500 height=300/>
 https://sibamusic.iran.liara.run/
 
-# Siba MusicPlayer
-
-a powerful and beautiful musicplayer created with React And Javascript AudioApi
-
-
-
 
 ## Features🎉
 

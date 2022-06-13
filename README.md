@@ -1,5 +1,5 @@
 
-# Siba MusicPlayer
+# Siba MusicPlayer🎸
 
 a powerful and beautiful musicplayer created with React And Javascript AudioApi
 

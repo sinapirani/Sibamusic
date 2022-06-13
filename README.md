@@ -1,6 +1,6 @@
 ![Screenshot_2022-06-12_15_34_38](https://user-images.githubusercontent.com/44531109/173252599-8c9c17aa-0fea-4fa0-b338-29e679f1eeea.png)
 
-## Demo
+## Demo✨
 <img src='https://user-images.githubusercontent.com/44531109/173253532-7ba7d1d1-7ee9-4f8c-801a-a766d0a8ffa7.gif' width=500 height=300/>
 https://sibamusic.iran.liara.run/
 
@@ -11,7 +11,7 @@ a powerful and beautiful musicplayer created with React And Javascript AudioApi
 
 
 
-## Features
+## Features🎉
 
 - Responsive
 - Live previews
@@ -19,7 +19,7 @@ a powerful and beautiful musicplayer created with React And Javascript AudioApi
 - Can support any format in any size
 
 
-## Run Locally
+## Run Locally🛸
 
 Clone the project
 

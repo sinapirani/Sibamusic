@@ -13,10 +13,10 @@ a powerful and beautiful musicplayer created with React And Javascript AudioApi
 
 ## Features🎉
 
-- Responsive
-- Live previews
-- Sound Visualistion
-- Can support any format in any size
+- Responsive🎨
+- Live previews🛸
+- Sound Visualistion🎢
+- Can support any format in any size🎡
 
 
 ## Run Locally🛸
